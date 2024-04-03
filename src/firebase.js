@@ -1,7 +1,7 @@
-// ecohub-frontend\src\firebase.js
+// ecohub-frontend/src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAJxRrindXnO3WOpFFxFmovJdWbvmG8Hp8",
@@ -13,9 +13,9 @@ const firebaseConfig = {
   measurementId: "G-24SZ6PV16Y"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-export { auth, app, firestore } ;
+
+export { auth, app, firestore };

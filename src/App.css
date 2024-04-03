@@ -1,10 +1,17 @@
 .App {
   text-align: center;
+  font-family: Arial, sans-serif; /* Use a more readable font */
+  color: #333; /* Use a darker color for text */
+  background-color: #ffffff; /* Use a light background color */
+  padding: 10px;  
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+body {
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -12,15 +19,22 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
+  background-color: #fdfeff; /* Use a darker color for the header */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1px 15px; /* Add some padding */
+  border-radius: 50px;
+  border: 2px solid black;
+}
+.App-link {
+  color: #007BFF; /* Use a more standard link color */
+  text-decoration: none; /* Remove underline */
 }
 
-.App-link {
-  color: #61dafb;
+.App-link:hover {
+  color: #0056b3; /* Change color on hover */
 }
 
 @keyframes App-logo-spin {
@@ -32,13 +46,15 @@
   }
 }
 button {
-  background-color: #61dafb;
+  background-color: #7fffc3;
   color: black;
   padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
-  border-radius: 10px;
-  border-color: cadetblue;
+  border-radius: 5px;
+  border-color: rgba(255, 255, 255, 0);
+  box-shadow:#816f6f 1px  1px 0px;
+  
 }
 
 input {
@@ -47,10 +63,11 @@ input {
 }
 .header-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   width: 100%;
 }
+
 .header-left {
   margin: 0;
 }
@@ -58,8 +75,86 @@ input {
 .header-right {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .header-buttons {
   margin-left: 10px;
 }
+
+.user-profile-icon {
+  width: 3%;
+  height: 3%;
+}
+
+.user-profile-icon:hover {
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  align-content: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 3px 50px;
+  z-index: 1;
+  border-radius: 10px;
+  right: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.userDataDiv{
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  background-color: #f5f4f4;
+  text-align: left;
+  border-radius: 10px;
+}
+.userDataDiv table{
+  
+  text-Align: 'left';
+  border: '1px  '; 
+  width: '100%'; 
+  height: 'auto'; 
+  table-layout: fixed;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(247, 245, 244);
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;  
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.userDataDiv table td {
+  background-color: #fffdfd; /* Replace with your preferred color */
+}
+.userDataDiv table td,th {
+  padding: 12px 15px;
+}
+.userDataDiv thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.userDataDiv tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.userDataDiv tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
