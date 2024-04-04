@@ -55,6 +55,10 @@ function App() {
 
         const userRole = userDocSnapshot.data().role;
         setIsAdmin(userRole === 'admin'); // Set the isAdmin state based on the user's role
+
+        if (userRole === 'admin') {
+          navigate('/admin');
+        }
       } catch (error) {
         console.error('Error checking user role:', error);
       }
@@ -63,7 +67,7 @@ function App() {
       setIsAdmin(false);
     }
   });
-
+ 
   // Clean up the auth state observer on unmount
   return unsubscribe;
 }, []);
@@ -130,11 +134,16 @@ function App() {
         
       </div>
       </header>
+
+
+
+
+      {/*}
       {user && (
           <div className="header-buttons">
             <button onClick={() => navigate('/wasteCollection')}>Go to Waste Collection</button>
             <button onClick={() => navigate('/eCommerce')}>Go to E-commerce</button>
-            {/* Use the isAdmin status to conditionally render admin-related buttons */}
+            // Use the isAdmin status to conditionally render admin-related buttons 
             {isAdmin && (
               <>
                 <button onClick={() => navigate('/admin')}>Go to Admin Dashboard</button>
@@ -148,8 +157,20 @@ function App() {
 
           </div>
         )}
-
+        */}
         
+        
+
+
+
+
+
+
+
+
+
+
+
       
         <Routes>
           <Route path="/logged-out" element={<LoggedOutPage />} />

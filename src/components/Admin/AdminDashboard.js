@@ -56,14 +56,16 @@ const AdminDashboard = () => {
   return (
     <div>
       <h2>Admin Dashboard</h2>
-      <nav>
-        <ul>
-          <li><Link to="/admin/requests">Waste Collection Requests</Link></li>
-          <li><Link to="/admin/users">Users</Link></li>
-          <Link to="/admin/order-details">Order Details</Link>
-        </ul>
-      </nav>
-      
+      {isAdmin && (
+              <>
+                <button onClick={() => navigate('/admin')}>Go to Admin Dashboard</button>
+                <button onClick={() => navigate('/admin/requests')}>Go to Admin Requests</button>
+                <button onClick={() => navigate('/admin/users')}>Go to Admin Users</button>
+                <button onClick={() => navigate('/admin/order-details')}>Go to Order Details</button>
+                
+                
+              </>
+            )}
     </div>
   );
 };
