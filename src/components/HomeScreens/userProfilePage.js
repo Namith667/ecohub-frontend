@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore';
 import '../../App.css';
 import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfilePage = () => {
   const [orders, setOrders] = useState([]);
@@ -11,6 +12,11 @@ const UserProfilePage = () => {
   const auth = getAuth();
   const db = getFirestore();
   const user = auth.currentUser;
+  
+const navigate = useNavigate();
+const handleViewInvoice = (orderId) => {
+  navigate(`/invoice/${orderId}`);
+};
 
   useEffect(() => {
     if (user) {
@@ -73,38 +79,35 @@ const UserProfilePage = () => {
         </table>
       </div>
      
-     <div className="userDataDiv">
-  <h3>Orders</h3>
-  <table>
-    <colgroup>
-    <col style={{width: '10%'}}/>
-      <col style={{width: '10%'}}/>
-      <col style={{width: '10%'}}/>
-      <col style={{width: '10%'}}/>
-      <col style={{width: '10%'}}/>
-    </colgroup>
-    <thead>
-      <tr>
-        <th>S.No</th>
-        <th>Order ID</th> {/* Add this line */}
-        <th>Amount</th>
-        <th>Address</th>
-        <th>Items</th>
-      </tr>
-    </thead>
-    {orders.map((order, index) => (
-      <tbody key={index}>
-        <tr>
-          <td>{index + 1}</td>
-          <td>{order.orderID}</td> {/* Add this line */}
-          <td>{order.orderDetails.amount}</td>
-          <td>{order.orderDetails.address}</td>
-          <td>{order.orderDetails.products ? order.orderDetails.products.map(product => product.Name).join(', ') : 'No items'}</td>
-        </tr>
-      </tbody>
-    ))}
-  </table>
-</div>
+      <div className="userDataDiv">
+      <h3>Orders</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Order ID</th>
+            <th>Amount</th>
+            <th>Address</th>
+            <th>Items</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order, index) => (
+            <tr key={order.id}>
+              <td>{index + 1}</td>
+              <td>{order.orderID}</td>
+              <td>{order.orderDetails.amount}</td>
+              <td>{order.orderDetails.address}</td>
+              <td>{order.orderDetails.products ? order.orderDetails.products.map(product => product.Name).join(', ') : 'No items'}</td>
+              <td>
+                <button onClick={() => handleViewInvoice(order.orderID)}>View Invoice</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
 
 
 <div className="userDataDiv">

@@ -5,6 +5,7 @@
   background-color: #E5F1ED
   ; /* Use a light background color */
   padding: 10px;  
+  height: 100vh;
 }
 
 .App-logo {
@@ -52,8 +53,9 @@ button {
   padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
+  border-width: 1px;
   border-radius: 5px;
-  border-color: rgba(255, 255, 255, 0);
+  border-color:  #7fffc3;
   box-shadow:#816f6f 1px  1px 0px;
   
 }
@@ -154,7 +156,6 @@ input {
 .userDataDiv tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-
 .userDataDiv tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }

@@ -1,6 +1,7 @@
 // ecohub-frontend/src/App.js
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+
 import { auth, firestore } from './firebase';
 import { signInWithRedirect, GoogleAuthProvider } from 'firebase/auth';
 import { doc, collection, onSnapshot, setDoc, getDoc } from 'firebase/firestore';
@@ -17,7 +18,8 @@ import AdminDashboard from './components/Admin/AdminDashboard';
 import AdminRequests from './components/Admin/AdminRequests';
 import AdminUsers from './components/Admin/AdminUsers';
 import OrderDetailsPage from './components/Admin/OrderDetailsPage';
-
+import AddProduct from './components/Admin/AddProducts';
+import Invoice from './components/Admin/Invoice'; 
 
 import LoggedOutPage from './components/LoggedOutPage';
 import CartPage from './components/ECommerce/CartPage';
@@ -103,7 +105,18 @@ function App() {
         <div className="header-content">
         <header  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'  }}>
           <div></div> {/* Empty div for balancing */}
-          <img src={EcoHubLogo} alt="EcoHub Logo" style={{ width: '70px', height: '70px', border: 'none',  padding:'5px'}}/>
+          <img 
+            src={EcoHubLogo} 
+            alt="EcoHub Logo" 
+            style={{ width: '70px', height: '70px', border: 'none', padding:'5px'}}
+            onClick={() => {
+              if (user.role === 'admin') {
+                navigate('/admin');
+              } else {
+                navigate('/');
+              }
+            }}
+          />
           <div></div> {/* Empty div for balancing */}
         </header>
           {user ? (
@@ -179,6 +192,7 @@ function App() {
           <Route path="/cart" element={<CartPage cart={cart} />} /> {/* Add this route */}
           <Route path="/payment" element={<PaymentPage />} /> {/* Add this route */}
           <Route path="/userProfile" element={<UserProfilePage user={user} />} />
+          <Route path="/invoice/:orderId" element={<Invoice />} />
 
           {isAdmin ? (
             <>
@@ -187,7 +201,9 @@ function App() {
               <Route path="/admin/requests" element={<AdminRequests />} />
               <Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/order-details" element={<OrderDetailsPage />} />
+              <Route path="/admin/add-product" element={<AddProduct />} /> {/* Add this route */}
               <Route path="/userProfile" element={<UserProfilePage user={user} />} />
+
         
 
             </>

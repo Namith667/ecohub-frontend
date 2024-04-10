@@ -57,15 +57,17 @@ const AdminDashboard = () => {
     <div>
       <h2>Admin Dashboard</h2>
       {isAdmin && (
-              <>
-                <button onClick={() => navigate('/admin')}>Go to Admin Dashboard</button>
-                <button onClick={() => navigate('/admin/requests')}>Go to Admin Requests</button>
-                <button onClick={() => navigate('/admin/users')}>Go to Admin Users</button>
-                <button onClick={() => navigate('/admin/order-details')}>Go to Order Details</button>
-                
-                
-              </>
-            )}
+        <>
+          <button style={{ padding: '10px 20px', fontSize: '16px', width: '300px', height: '150px' }} onClick={() => navigate('/wasteCollection')}>Waste Collection</button>
+          <button style={{ padding: '10px 20px', fontSize: '16px', width: '300px', height: '150px' }} onClick={() => navigate('/eCommerce')}>ECommerce</button>
+          <button style={{ padding: '10px 20px', fontSize: '16px', width: '300px', height: '150px' }} onClick={() => navigate('/admin/requests')}>Waste Collection Requests</button>
+          <button style={{ padding: '10px 20px', fontSize: '16px', width: '300px', height: '150px' }} onClick={() => navigate('/admin/users')}>Users Details</button>
+          <button style={{ padding: '10px 20px', fontSize: '16px', width: '300px', height: '150px' }} onClick={() => navigate('/admin/order-details')}>All Orders</button>
+          <button style={{ padding: '10px 20px', fontSize: '16px', width: '300px', height: '150px' }} onClick={() => navigate('/admin/add-product')}>Add Product</button>
+
+        </>
+      )}
+
     </div>
   );
 };

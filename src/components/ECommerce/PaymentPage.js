@@ -5,8 +5,11 @@ import { useLocation } from 'react-router-dom';
 import { increment } from 'firebase/firestore';
 
 const PaymentPage = () => {
-  const [cart, setCart] = useState([]);  
-  const location = useLocation();
+    // Get the cart data from the location state
+    const location = useLocation();
+  const initialCart = location.state.cart;
+  const [cart, setCart] = useState(initialCart);
+  
   const [address, setAddress] = useState('');
   const [isOrderConfirmed, setOrderConfirmed] = useState(false);
   const auth = getAuth();
@@ -50,6 +53,7 @@ const PaymentPage = () => {
 
     let orderDocRef;
     if (user) {
+      console.log(cart);
       const order = {
         orderID: doc(collection(db, 'orders')).id, // Add this line
         userID: user.uid,
