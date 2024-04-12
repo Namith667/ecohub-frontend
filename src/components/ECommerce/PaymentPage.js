@@ -88,7 +88,7 @@ const PaymentPage = () => {
 
   return (
     <div>
-      <h2>Payment</h2>
+      <h2>Order Confirmation</h2>
       <form onSubmit={handleConfirmOrder}>
         <label>
           Address:
